@@ -16,11 +16,15 @@ namespace MonoDroid.TimesSquare
         private static readonly int[] StateRangeFirst = {Resource.Attribute.state_range_first};
         private static readonly int[] StateRangeMiddle = {Resource.Attribute.state_range_middle};
         private static readonly int[] StateRangeLast = {Resource.Attribute.state_range_last};
+        private static readonly int[] StateIsFuture = { Resource.Attribute.state_is_future };
+        private static readonly int[] StateIsWeekend = { Resource.Attribute.state_is_weekend };
 
         private bool _isSelectable;
         private bool _isCurrentMonth;
         private bool _isToday;
         private bool _isHighlighted;
+        private bool _isFuture;
+        private bool _isWeekend;
         private RangeState _rangeState = RangeState.None;
 
         public CalendarCellView(IntPtr handle, JniHandleOwnership transfer) : base(handle, transfer)
@@ -85,9 +89,27 @@ namespace MonoDroid.TimesSquare
             }
         }
 
+        public bool IsFuture
+        {
+            set
+            {
+                _isFuture = value;
+                RefreshDrawableState();
+            }
+        }
+
+        public bool IsWeekend
+        {
+            set
+            {
+                _isWeekend = value;
+                RefreshDrawableState();
+            }
+        }
+
         protected override int[] OnCreateDrawableState(int extraSpace)
         {
-            int[] drawableState = base.OnCreateDrawableState(extraSpace + 5);
+            int[] drawableState = base.OnCreateDrawableState(extraSpace + 7);
 
             if (_isSelectable) {
                 MergeDrawableStates(drawableState, StateSelectable);
@@ -117,6 +139,17 @@ namespace MonoDroid.TimesSquare
                     MergeDrawableStates(drawableState, StateRangeLast);
                     break;
             }
+
+            if (_isFuture)
+            {
+                MergeDrawableStates(drawableState, StateIsFuture);
+            }
+
+            if (_isWeekend)
+            {
+                MergeDrawableStates(drawableState, StateIsWeekend);
+            }
+
             return drawableState;
         }
     }

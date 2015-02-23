@@ -78,6 +78,8 @@ namespace MonoDroid.TimesSquare
                         cellView.IsCurrentMonth = cell.IsCurrentMonth;
                         cellView.IsToday = cell.IsToday;
                         cellView.IsHighlighted = cell.IsHighlighted;
+                        cellView.IsFuture = cell.IsFuture;
+                        cellView.IsWeekend = cell.IsWeekend;
                         cellView.RangeState = cell.RangeState;
                         cellView.Tag = cell;
                     }

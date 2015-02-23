@@ -16,5 +16,7 @@
     <attr name="state_range_middle" format="boolean" />
     <attr name="state_range_last" format="boolean" />
     <attr name="state_highlighted" format="boolean" />
+    <attr name="state_is_future" format="boolean" />
+    <attr name="state_is_weekend" format="boolean" />
   </declare-styleable>
 </resources>

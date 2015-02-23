@@ -19,10 +19,12 @@ namespace MonoDroid.TimesSquare
         public bool IsToday { get; set; }
         public bool IsSelectable { get; set; }
         public bool IsHighlighted { get; set; }
+        public bool IsFuture { get; set; }
+        public bool IsWeekend { get; set; }
         public RangeState RangeState { get; set; }
 
         public MonthCellDescriptor(DateTime date, bool isCurrentMonth, bool isSelectable, bool isSelected,
-            bool isToday, bool isHighlighted, int value, RangeState rangeState)
+            bool isToday, bool isHighlighted, bool isFuture, bool isWeekend, int value, RangeState rangeState)
         {
             DateTime = date;
             Value = value;
@@ -31,6 +33,8 @@ namespace MonoDroid.TimesSquare
             IsHighlighted = isHighlighted;
             IsToday = isToday;
             IsSelectable = isSelectable;
+            IsFuture = isFuture;
+            IsWeekend = isWeekend;
             RangeState = rangeState;
         }
 
@@ -44,6 +48,8 @@ namespace MonoDroid.TimesSquare
                    + ", IsToday=" + IsToday
                    + ", IsSelectable=" + IsSelectable
                    + ", IsHighlighted=" + IsHighlighted
+                   + ", IsFuture=" + IsFuture
+                   + ", IsWeekend=" + IsWeekend
                    + ", RangeSTate=" + RangeState
                    + "}";
         }

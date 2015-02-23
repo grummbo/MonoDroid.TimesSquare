@@ -211,6 +211,8 @@ namespace MonoDroid.TimesSquare
                     bool isSelectable = isCurrentMonth && IsBetweenDates(cal, MinDate, MaxDate);
                     bool isToday = IsSameDate(cal, Today);
                     bool isHighlighted = ContatinsDate(_highlightedCals, cal);
+                    bool isFuture = IsAfter(cal, Today);
+                    bool isWeekend = cal.DayOfWeek == DayOfWeek.Saturday || cal.DayOfWeek == DayOfWeek.Sunday;
                     int value = cal.Day;
 
                     var rangeState = RangeState.None;
@@ -227,7 +229,7 @@ namespace MonoDroid.TimesSquare
                     }
 
                     weekCells.Add(new MonthCellDescriptor(date, isCurrentMonth, isSelectable, isSelected,
-                        isToday, isHighlighted, value, rangeState));
+                        isToday, isHighlighted, isFuture, isWeekend, value, rangeState));
                     cal = cal.AddDays(1);
                 }
             }
@@ -315,6 +317,18 @@ namespace MonoDroid.TimesSquare
             }
             SelectedCells.Clear();
             SelectedCals.Clear();
+        }
+
+        public void Deselect()
+        {
+            foreach (var selectedCell in SelectedCells)
+            {
+                //De-select the currently selected cell.
+                selectedCell.IsSelected = false;
+            }
+            SelectedCells.Clear();
+            SelectedCals.Clear();
+            ValidateAndUpdate();
         }
 
         internal bool DoSelectDate(DateTime date, MonthCellDescriptor cell)
@@ -453,6 +467,11 @@ namespace MonoDroid.TimesSquare
             return cal.Month == selectedDate.Month
                    && cal.Year == selectedDate.Year
                    && cal.Day == selectedDate.Day;
+        }
+
+        private static bool IsAfter(DateTime cal, DateTime today)
+        {
+            return cal.CompareTo(today) > 0;
         }
 
         internal static bool IsSameMonth(DateTime cal, MonthDescriptor month)
