@@ -6,6 +6,7 @@ using Android.Content;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Android.Graphics;
 
 namespace MonoDroid.TimesSquare
 {
@@ -106,7 +107,7 @@ namespace MonoDroid.TimesSquare
 
         public void setTitleTextColor(int color)
         {
-            _title.SetTextColor(base.Resources.GetColor(color));
+            _title.SetTextColor(new Color(color));
         }
 
         public void setHeaderTextColor(int color)

@@ -22,7 +22,7 @@ namespace MonoDroid.TimesSquare
 
         public void SetDividerColor(int color)
         {
-            _dividerPaint.Color = base.Resources.GetColor(color);
+            _dividerPaint.Color = new Color(color);
         }
 
         public void SetDayBackground(int resID)

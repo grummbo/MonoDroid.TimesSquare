@@ -5,6 +5,7 @@ using Android.Content.Res;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Android.Graphics;
 
 namespace MonoDroid.TimesSquare
 {
@@ -89,10 +90,10 @@ namespace MonoDroid.TimesSquare
             }
         }
 
-        public void SetCellTextColor(int resID)
+        public void SetCellTextColor(int color)
         {
             for (int i = 0; i < ChildCount; i++) {
-                ((TextView) GetChildAt(i)).SetTextColor(base.Resources.GetColor(resID));
+                ((TextView) GetChildAt(i)).SetTextColor(new Color(color));
             }
         }
     }

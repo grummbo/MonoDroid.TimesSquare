@@ -78,15 +78,15 @@ namespace MonoDroid.TimesSquare
             var bg = a.GetColor(Resource.Styleable.CalendarPickerView_android_background,
                 Resource.Color.calendar_bg);
             DividerColor = a.GetColor(Resource.Styleable.CalendarPickerView_dividerColor,
-                Resource.Color.calendar_divider);
+                Context.Resources.GetColor(Resource.Color.calendar_divider));
             DayBackgroundResID = a.GetResourceId(Resource.Styleable.CalendarPickerView_dayBackground,
                 Resource.Drawable.calendar_bg_selector);
             DayTextColorResID = a.GetResourceId(Resource.Styleable.CalendarPickerView_dayTextColor,
                 Resource.Color.calendar_text_selector);
             TitleTextColor = a.GetColor(Resource.Styleable.CalendarPickerView_titleTextColor,
-                Resource.Color.calendar_text_active);
+                Context.Resources.GetColor(Resource.Color.calendar_text_active));
             HeaderTextColor = a.GetColor(Resource.Styleable.CalendarPickerView_headerTextColor,
-                Resource.Color.calendar_text_active);
+                Context.Resources.GetColor(Resource.Color.calendar_text_active));
             a.Recycle();
 
             _context = context;
