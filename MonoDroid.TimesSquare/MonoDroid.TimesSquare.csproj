@@ -15,9 +15,9 @@
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <AssemblyName>MonoDroid.TimesSquare</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
-    <TargetFrameworkVersion>v4.3</TargetFrameworkVersion>
-    <AndroidUseLatestPlatformSdk>
-    </AndroidUseLatestPlatformSdk>
+    <TargetFrameworkVersion>
+    </TargetFrameworkVersion>
+    <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -79,7 +79,9 @@
     <AndroidResource Include="Resources\color\calendar_text_selector.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\values\colors.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\dimens.xml" />
@@ -94,7 +96,9 @@
     <Content Include="Properties\AndroidManifest.xml">
       <SubType>Designer</SubType>
     </Content>
-    <AndroidResource Include="Resources\values\attrs.xml" />
+    <AndroidResource Include="Resources\values\attrs.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable\calendar_bg_selector.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
