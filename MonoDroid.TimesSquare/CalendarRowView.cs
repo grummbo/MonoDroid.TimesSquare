@@ -33,10 +33,11 @@ namespace MonoDroid.TimesSquare
 
             int totalWidth = MeasureSpec.GetSize(widthMeasureSpec);
             _cellSize = totalWidth / 7;
+            int heightSize = (int)Math.Round(40 * (Context.Resources.DisplayMetrics.Ydpi / (int)DisplayMetricsDensity.Default));
             int cellWidthSpec = MeasureSpec.MakeMeasureSpec(_cellSize, MeasureSpecMode.Exactly);
             int cellHeightSpec = IsHeaderRow
-                ? MeasureSpec.MakeMeasureSpec(_cellSize, MeasureSpecMode.AtMost)
-                : cellWidthSpec;
+                ? MeasureSpec.MakeMeasureSpec(heightSize, MeasureSpecMode.AtMost)
+                : MeasureSpec.MakeMeasureSpec(heightSize, MeasureSpecMode.Exactly);
             int rowHeight = 0;
             for (int c = 0; c < ChildCount; c++) {
                 var child = GetChildAt(c);

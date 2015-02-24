@@ -4,6 +4,7 @@ using Android.Content.Res;
 using Android.Util;
 using Android.Views;
 using Android.Graphics;
+using System;
 
 namespace MonoDroid.TimesSquare
 {
@@ -96,14 +97,15 @@ namespace MonoDroid.TimesSquare
             int cellSize = widthMeasureSize/7;
             //Remove any extra pixels since /7 us unlikey to give whole nums.
             widthMeasureSize = cellSize*7;
+            int heightSize = (int)Math.Round(40 * (Context.Resources.DisplayMetrics.Ydpi / (int)DisplayMetricsDensity.Default));
             int totalHeight = 0;
             int rowWidthSpec = MeasureSpec.MakeMeasureSpec(widthMeasureSize, MeasureSpecMode.Exactly);
-            int rowHeightSpec = MeasureSpec.MakeMeasureSpec(cellSize, MeasureSpecMode.Exactly);
+            int rowHeightSpec = MeasureSpec.MakeMeasureSpec(heightSize, MeasureSpecMode.Exactly);
             for (int c = 0; c < ChildCount; c++) {
                 var child = GetChildAt(c);
                 if (child.Visibility == ViewStates.Visible) {
                     MeasureChild(child, rowWidthSpec,
-                        c == 0 ? MeasureSpec.MakeMeasureSpec(cellSize, MeasureSpecMode.AtMost) : rowHeightSpec);
+                        c == 0 ? MeasureSpec.MakeMeasureSpec(heightSize, MeasureSpecMode.AtMost) : rowHeightSpec);
                     totalHeight += child.MeasuredHeight;
                 }
             }

@@ -178,7 +178,7 @@ namespace MonoDroid.TimesSquare
                     || _monthCounter.Year < maxYear)
                    && _monthCounter.Year < maxYear + 1) {
                 var month = new MonthDescriptor(_monthCounter.Month, _monthCounter.Year, _monthCounter,
-                    _monthCounter.ToString(MonthNameFormat));
+                    _monthCounter.ToString(MonthNameFormat).ToUpper());
                 Cells.Add(GetMonthCells(month, _monthCounter));
                 Logr.D("Adding month {0}", month);
                 Months.Add(month);
