@@ -41,7 +41,7 @@ namespace MonoDroid.TimesSquare
             var monthView = (MonthView) convertView ??
                             MonthView.Create(parent, _inflater, c.WeekdayNameFormat, c.Today,
                                 c.ClickHandler, c.DividerColor, c.DayBackgroundResID, c.DayTextColorResID,
-                                c.TitleTextColor, c.HeaderTextColor);
+                                c.TitleTextColour, c.HeaderTextColor);
             monthView.Init(_calendar.Months[position], _calendar.Cells[position]);
             return monthView;
         }
